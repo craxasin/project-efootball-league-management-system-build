@@ -13,7 +13,8 @@ export function AdminFixtures({ teams, matchdays }: { teams: TeamOption[]; match
 
   async function createMatchday(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const response = await fetch("/api/matchdays", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -22,14 +23,15 @@ export function AdminFixtures({ teams, matchdays }: { teams: TeamOption[]; match
     const payload = await response.json().catch(() => null);
     setMessage(response.ok ? "Matchday created" : payload?.error ?? "Could not create matchday");
     if (response.ok) {
-      event.currentTarget.reset();
+      formElement.reset();
       router.refresh();
     }
   }
 
   async function createMatch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const scheduledAt = form.get("scheduledAt");
     const response = await fetch("/api/matches", {
       method: "POST",
@@ -44,7 +46,7 @@ export function AdminFixtures({ teams, matchdays }: { teams: TeamOption[]; match
     const payload = await response.json().catch(() => null);
     setMessage(response.ok ? "Match created" : payload?.error ?? "Could not create match");
     if (response.ok) {
-      event.currentTarget.reset();
+      formElement.reset();
       router.refresh();
     }
   }
