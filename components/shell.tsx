@@ -15,7 +15,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <header className="border-b border-white/60 bg-white/85 backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
           <Link href="/dashboard" className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded bg-emerald-700 text-white shadow-panel">
+            <span
+              className="grid h-10 w-10 place-items-center rounded shadow-panel"
+              style={{
+                backgroundColor: "#f4f9f8",
+                backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2Fd98d6f8e521a4d5f9b9ddb0a6527cb9b%2F0c009492d76f43dcbd515f2ef6405ed9)",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "cover"
+              }}
+            >
               <Trophy size={22} />
             </span>
             <span>
