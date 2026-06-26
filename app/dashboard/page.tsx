@@ -34,15 +34,10 @@ export default async function DashboardPage() {
   return (
     <AppShell>
       <div className="grid gap-6">
-        <section className="overflow-hidden rounded border border-emerald-900/10 bg-emerald-900 text-white shadow-panel" style={{
-          backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2Fd98d6f8e521a4d5f9b9ddb0a6527cb9b%2Fa0ea69bd71724c418bc5cf1df756f7f0)",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover"
-        }}>
+        <section className="overflow-hidden rounded border border-emerald-900/10 bg-emerald-900 text-white shadow-panel">
           <div className="pitch-lines grid gap-6 p-6 lg:grid-cols-[1.2fr_0.8fr] lg:p-8">
             <div>
-              <p className="text-sm font-black uppercase tracking-wide text-emerald-200" style={{ color: "rgba(181, 144, 79, 1)" }}>League control room</p>
+              <p className="text-sm font-black uppercase tracking-wide text-emerald-200">League control room</p>
               <h1 className="mt-3 text-4xl font-black sm:text-5xl">Manage fixtures, results, and the table.</h1>
               <p className="mt-4 max-w-2xl text-emerald-50">Six players, admin-built fixtures, player-submitted results, and live standings.</p>
             </div>
@@ -122,7 +117,7 @@ export default async function DashboardPage() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded bg-white/10 p-4 ring-1 ring-white/10" style={{ backgroundColor: "rgba(0, 0, 0, 0.22)" }}>
+    <div className="rounded bg-white/10 p-4 ring-1 ring-white/10">
       <p className="text-3xl font-black">{value}</p>
       <p className="text-sm font-semibold text-emerald-100">{label}</p>
     </div>
