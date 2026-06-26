@@ -115,13 +115,15 @@ export function RegisterForm() {
 
 function Field(props: React.InputHTMLAttributes<HTMLInputElement> & { label: string; name: string }) {
   const { label, name, ...rest } = props;
-  const labelColors = {
-    "Email": "rgba(255, 255, 255, 1)",
-    "Password": "rgba(93, 93, 93, 1)"
+  const labelColors: Record<string, string> = {
+    "Email": "rgba(0, 0, 0, 1)",
+    "Password": "rgba(0, 0, 0, 1)",
+    "Name": "rgba(0, 0, 0, 1)",
+    "Team name": "rgba(0, 0, 0, 1)"
   };
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-bold" style={{ color: labelColors[label as keyof typeof labelColors] || "rgb(51, 65, 85)" }}>{label}</span>
+      <span className="mb-1 block text-sm font-bold" style={{ color: labelColors[label] || "rgba(0, 0, 0, 1)" }}>{label}</span>
       <input
         name={name}
         className="w-full rounded border border-slate-200 bg-white px-3 py-3 text-slate-950 outline-none ring-emerald-600 transition focus:ring-2"
