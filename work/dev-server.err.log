@@ -1,0 +1,57 @@
+$ next dev
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ ⨯ Error [PrismaClientInitializationError]: 
+Invalid `prisma.team.findMany()` invocation:
+
+
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:7
+   | 
+ 6 |   provider = "postgresql"
+ 7 |   url      = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+    at <unknown> (-->  schema.prisma:7)
+    at async DashboardPage (app\dashboard\page.tsx:15:39)
+  13 | export default async function DashboardPage() {
+  14 |   const user = await getCurrentUser();
+> 15 |   const [teams, matchdays, matches] = await Promise.all([
+     |                                       ^
+  16 |     prisma.team.findMany({ orderBy: { createdAt: "asc" } }),
+  17 |     prisma.matchday.findMany({ orderBy: { number: "asc" } }),
+  18 |     prisma.match.findMany({ {
+  clientVersion: '6.19.3',
+  errorCode: undefined,
+  retryable: undefined,
+  digest: '4249783897'
+}
+ ⨯ Error [PrismaClientInitializationError]: 
+Invalid `prisma.team.findMany()` invocation:
+
+
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:7
+   | 
+ 6 |   provider = "postgresql"
+ 7 |   url      = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+    at <unknown> (-->  schema.prisma:7)
+    at async DashboardPage (app\dashboard\page.tsx:15:39)
+  13 | export default async function DashboardPage() {
+  14 |   const user = await getCurrentUser();
+> 15 |   const [teams, matchdays, matches] = await Promise.all([
+     |                                       ^
+  16 |     prisma.team.findMany({ orderBy: { createdAt: "asc" } }),
+  17 |     prisma.matchday.findMany({ orderBy: { number: "asc" } }),
+  18 |     prisma.match.findMany({ {
+  clientVersion: '6.19.3',
+  errorCode: undefined,
+  retryable: undefined,
+  digest: '4249783897'
+}

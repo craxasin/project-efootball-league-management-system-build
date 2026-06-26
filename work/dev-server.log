@@ -1,0 +1,118 @@
+   ▲ Next.js 15.5.19
+   - Local:        http://localhost:3000
+   - Network:      http://172.28.224.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 3.7s
+ ○ Compiling / ...
+ ✓ Compiled / in 9s (559 modules)
+ GET / 307 in 9974ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 4.6s (986 modules)
+prisma:error 
+Invalid `prisma.team.findMany()` invocation:
+
+
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:7
+   | 
+ 6 |   provider = "postgresql"
+ 7 |   url      = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+prisma:error 
+Invalid `prisma.matchday.findMany()` invocation:
+
+
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:7
+   | 
+ 6 |   provider = "postgresql"
+ 7 |   url      = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+prisma:error 
+Invalid `prisma.match.findMany()` invocation:
+
+
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:7
+   | 
+ 6 |   provider = "postgresql"
+ 7 |   url      = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+ GET /dashboard 500 in 5628ms
+ GET / 307 in 231ms
+prisma:error 
+Invalid `prisma.team.findMany()` invocation:
+
+
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:7
+   | 
+ 6 |   provider = "postgresql"
+ 7 |   url      = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+prisma:error 
+Invalid `prisma.matchday.findMany()` invocation:
+
+
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:7
+   | 
+ 6 |   provider = "postgresql"
+ 7 |   url      = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+prisma:error 
+Invalid `prisma.match.findMany()` invocation:
+
+
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:7
+   | 
+ 6 |   provider = "postgresql"
+ 7 |   url      = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+ GET /dashboard 500 in 314ms
+ ✓ Compiled in 655ms (295 modules)
+ ✓ Compiled in 217ms (295 modules)
+ ✓ Compiled in 784ms (988 modules)
+ ✓ Compiled / in 459ms (697 modules)
+ GET / 307 in 1064ms
+ GET /dashboard 200 in 346ms
+ GET /dashboard 200 in 107ms
+ GET /dashboard 200 in 161ms
+ GET /dashboard 200 in 128ms
+ GET /dashboard 200 in 139ms
+ GET /dashboard 200 in 107ms
+ GET /dashboard 200 in 154ms
+ GET /dashboard 200 in 151ms
+ GET /dashboard 200 in 135ms
+ GET /dashboard 200 in 150ms
+ GET /dashboard 200 in 153ms
+ GET / 307 in 137ms
+ GET /dashboard 200 in 159ms
+ GET / 307 in 116ms
+ GET /dashboard 200 in 167ms
+ GET / 307 in 160ms
+ GET /dashboard 200 in 120ms
+ GET /dashboard 200 in 133ms
+ GET / 307 in 142ms
+ GET /dashboard 200 in 159ms
+ GET /dashboard 200 in 135ms
+ GET / 307 in 182ms
+ GET /dashboard 200 in 170ms
+   Reload env: .env
+ ✓ Compiled in 1496ms (988 modules)
+   Reload env: .env
+ ✓ Compiled in 717ms (974 modules)
