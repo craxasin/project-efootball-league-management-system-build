@@ -1,5 +1,8 @@
+import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Trophy } from "lucide-react";
+import { authOptions } from "@/lib/auth";
 import { SignOutButton } from "@/components/sign-out-button";
 
 const nav = [
@@ -9,26 +12,20 @@ const nav = [
   { href: "/feed", label: "Match Feed" }
 ];
 
-export function AppShell({ children }: { children: React.ReactNode }) {
+export async function AppShell({ children }: { children: React.ReactNode }) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user) redirect("/login");
+
   return (
     <div className="min-h-screen">
       <header className="border-b border-white/60 bg-white/85 backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
           <Link href="/dashboard" className="flex items-center gap-3">
-            <span
-              className="grid h-10 w-10 place-items-center rounded shadow-panel"
-              style={{
-                backgroundColor: "#f4f9f8",
-                backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2Fd98d6f8e521a4d5f9b9ddb0a6527cb9b%2F0c009492d76f43dcbd515f2ef6405ed9)",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundSize: "cover"
-              }}
-            >
+            <span className="grid h-10 w-10 place-items-center rounded bg-emerald-700 text-white shadow-panel">
               <Trophy size={22} />
             </span>
             <span>
-              <span className="block text-sm font-black uppercase tracking-wide text-emerald-700">Saimoo's League</span>
+              <span className="block text-sm font-black uppercase tracking-wide text-emerald-700">Private League</span>
               <span className="block text-lg font-black text-slate-950">eFootball Manager</span>
             </span>
           </Link>
@@ -38,6 +35,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 {item.label}
               </Link>
             ))}
+            <SignOutButton />
           </div>
         </div>
       </header>
