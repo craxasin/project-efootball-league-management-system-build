@@ -20,34 +20,34 @@ export default async function LeagueTablePage() {
           <p className="mt-1 text-sm font-semibold text-slate-500">Sorted by points, goal difference, then goals for.</p>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[760px] text-sm">
+          <table className="w-full text-xs sm:text-sm">
             <thead className="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
               <tr>
-                <th className="px-4 py-3">#</th>
-                <th className="px-4 py-3">Team</th>
+                <th className="px-2 py-2 sm:px-4 sm:py-3">#</th>
+                <th className="px-2 py-2 sm:px-4 sm:py-3">Team</th>
                 {["P", "W", "D", "L", "GF", "GA", "GD", "Pts"].map((head) => (
-                  <th key={head} className="px-4 py-3 text-center">{head}</th>
+                  <th key={head} className="px-2 py-2 text-center sm:px-4 sm:py-3">{head}</th>
                 ))}
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {table.map((row, index) => (
                 <tr key={row.teamId}>
-                  <td className="px-4 py-4 font-black">{index + 1}</td>
-                  <td className="px-4 py-4">
-                    <div className="flex items-center gap-3">
+                  <td className="px-2 py-2 font-black sm:px-4 sm:py-4">{index + 1}</td>
+                  <td className="px-2 py-2 sm:px-4 sm:py-4">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <TeamLogo src={row.logoUrl} name={row.teamName} size="sm" />
                       <span className="font-black">{row.teamName}</span>
                     </div>
                   </td>
-                  <td className="px-4 py-4 text-center font-semibold">{row.played}</td>
-                  <td className="px-4 py-4 text-center font-semibold">{row.wins}</td>
-                  <td className="px-4 py-4 text-center font-semibold">{row.draws}</td>
-                  <td className="px-4 py-4 text-center font-semibold">{row.losses}</td>
-                  <td className="px-4 py-4 text-center font-semibold">{row.goalsFor}</td>
-                  <td className="px-4 py-4 text-center font-semibold">{row.goalsAgainst}</td>
-                  <td className="px-4 py-4 text-center font-semibold">{row.goalDifference}</td>
-                  <td className="px-4 py-4 text-center text-lg font-black">{row.points}</td>
+                  <td className="px-2 py-2 text-center font-semibold sm:px-4 sm:py-4">{row.played}</td>
+                  <td className="px-2 py-2 text-center font-semibold sm:px-4 sm:py-4">{row.wins}</td>
+                  <td className="px-2 py-2 text-center font-semibold sm:px-4 sm:py-4">{row.draws}</td>
+                  <td className="px-2 py-2 text-center font-semibold sm:px-4 sm:py-4">{row.losses}</td>
+                  <td className="px-2 py-2 text-center font-semibold sm:px-4 sm:py-4">{row.goalsFor}</td>
+                  <td className="px-2 py-2 text-center font-semibold sm:px-4 sm:py-4">{row.goalsAgainst}</td>
+                  <td className="px-2 py-2 text-center font-semibold sm:px-4 sm:py-4">{row.goalDifference}</td>
+                  <td className="px-2 py-2 text-center font-black sm:px-4 sm:py-4 sm:text-lg">{row.points}</td>
                 </tr>
               ))}
             </tbody>

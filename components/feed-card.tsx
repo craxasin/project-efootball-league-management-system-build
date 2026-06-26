@@ -30,7 +30,7 @@ export function FeedCard({ match }: { match: FeedMatch }) {
           </div>
           <TeamBlock name={match.awayTeam.name} logoUrl={match.awayTeam.logoUrl} align="left" />
         </div>
-        <img src={match.result.screenshotUrl} alt="Match screenshot" className="h-72 w-full object-cover" />
+        <img src={match.result.screenshotUrl} alt="Match screenshot" className="aspect-video w-full object-cover" />
       </Link>
     </article>
   );

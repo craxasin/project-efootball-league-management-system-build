@@ -8,6 +8,8 @@ export function ResultForm({ matchId }: { matchId: string }) {
   const router = useRouter();
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [screenshotStatus, setScreenshotStatus] = useState<"idle" | "selected" | "uploading">("idle");
+  const [screenshotName, setScreenshotName] = useState("");
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -27,6 +29,8 @@ export function ResultForm({ matchId }: { matchId: string }) {
     }
 
     setMessage("Result submitted");
+    setScreenshotStatus("idle");
+    setScreenshotName("");
     router.refresh();
   }
 
@@ -36,13 +40,31 @@ export function ResultForm({ matchId }: { matchId: string }) {
         <ScoreInput name="homeScore" label="Home score" />
         <ScoreInput name="awayScore" label="Away score" />
       </div>
-      <label className="flex cursor-pointer items-center justify-center gap-2 rounded border border-dashed border-slate-300 bg-white px-3 py-4 text-sm font-bold text-slate-700 hover:border-emerald-500">
+      <label className={`flex cursor-pointer items-center justify-center gap-2 rounded border-2 border-dashed px-3 py-4 text-sm font-bold transition-colors ${
+        screenshotStatus === "selected" ? "border-blue-300 bg-blue-50 text-blue-700" :
+        screenshotStatus === "uploading" ? "border-blue-300 bg-blue-50 text-blue-700" :
+        "border-slate-300 bg-white text-slate-700 hover:border-emerald-500"
+      }`}>
         <Camera size={18} />
-        Match screenshot
-        <input name="screenshot" type="file" accept="image/png,image/jpeg,image/webp" required className="sr-only" />
+        {screenshotStatus === "selected" ? `Selected: ${screenshotName}` : screenshotStatus === "uploading" ? "Uploading..." : "Match screenshot"}
+        <input
+          name="screenshot"
+          type="file"
+          accept="image/png,image/jpeg,image/webp"
+          required
+          disabled={loading || screenshotStatus === "uploading"}
+          className="sr-only"
+          onChange={(event) => {
+            const file = event.target.files?.[0];
+            if (file) {
+              setScreenshotName(file.name);
+              setScreenshotStatus("selected");
+            }
+          }}
+        />
       </label>
       {message ? <p className="rounded bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-700">{message}</p> : null}
-      <button className="inline-flex items-center gap-2 rounded bg-emerald-700 px-4 py-3 font-bold text-white hover:bg-emerald-800" disabled={loading}>
+      <button className="inline-flex items-center gap-2 rounded bg-emerald-700 px-4 py-3 font-bold text-white hover:bg-emerald-800" disabled={loading || screenshotStatus === "uploading"}>
         <Send size={18} />
         {loading ? "Submitting..." : "Submit result"}
       </button>
