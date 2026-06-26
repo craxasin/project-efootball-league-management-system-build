@@ -28,7 +28,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <Trophy size={22} />
             </span>
             <span>
-              <span className="block text-sm font-black uppercase tracking-wide text-emerald-700">Private League</span>
+              <span className="block text-sm font-black uppercase tracking-wide text-emerald-700">Saimoo's League</span>
               <span className="block text-lg font-black text-slate-950">eFootball Manager</span>
             </span>
           </Link>
