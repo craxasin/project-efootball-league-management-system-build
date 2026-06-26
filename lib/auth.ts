@@ -27,23 +27,14 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(rawCredentials) {
-        const parsed = credentialsSchema.safeParse(rawCredentials);
-        if (!parsed.success) return null;
-
-        const user = await prisma.user.findUnique({
-          where: { email: parsed.data.email.toLowerCase() }
-        });
-        if (!user) return null;
-
-        const passwordValid = await bcrypt.compare(parsed.data.password, user.passwordHash);
-        if (!passwordValid) return null;
-
+        // Auto-login with test user in design mode
+        const testUser = await getOrCreateTestUser();
         return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          image: user.image,
-          role: user.role
+          id: testUser.id,
+          name: testUser.name,
+          email: testUser.email,
+          image: testUser.image,
+          role: testUser.role
         };
       }
     })
@@ -62,6 +53,10 @@ export const authOptions: NextAuthOptions = {
         session.user.role = token.role as "ADMIN" | "PLAYER";
       }
       return session;
+    },
+    async signIn() {
+      // Always allow sign-in for design mode
+      return true;
     }
   }
 };
@@ -74,6 +69,29 @@ export async function getCurrentUser() {
     where: { id: session.user.id },
     include: { team: true }
   });
+}
+
+async function getOrCreateTestUser() {
+  const testEmail = "design@test.local";
+  const user = await prisma.user.upsert({
+    where: { email: testEmail },
+    update: {},
+    create: {
+      email: testEmail,
+      name: "Design User",
+      passwordHash: await bcrypt.hash("designmode", 10),
+      role: "ADMIN",
+      team: {
+        create: {
+          name: "Design Team",
+          logoUrl: "https://via.placeholder.com/200"
+        }
+      }
+    },
+    include: { team: true }
+  });
+
+  return user;
 }
 
 export async function requireUser() {

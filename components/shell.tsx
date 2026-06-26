@@ -1,8 +1,5 @@
-import { getServerSession } from "next-auth";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { Trophy } from "lucide-react";
-import { authOptions } from "@/lib/auth";
 import { SignOutButton } from "@/components/sign-out-button";
 
 const nav = [
@@ -12,10 +9,7 @@ const nav = [
   { href: "/feed", label: "Match Feed" }
 ];
 
-export async function AppShell({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession(authOptions);
-  if (!session?.user) redirect("/login");
-
+export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen">
       <header className="border-b border-white/60 bg-white/85 backdrop-blur">
@@ -35,7 +29,6 @@ export async function AppShell({ children }: { children: React.ReactNode }) {
                 {item.label}
               </Link>
             ))}
-            <SignOutButton />
           </div>
         </div>
       </header>

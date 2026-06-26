@@ -77,11 +77,18 @@ export function RegisterForm() {
       return;
     }
 
-    await signIn("credentials", {
+    const result = await signIn("credentials", {
       redirect: false,
       email: form.get("email"),
       password: form.get("password")
     });
+
+    if (result?.error) {
+      setError("Failed to log in after registration. Please try logging in manually.");
+      setLoading(false);
+      return;
+    }
+
     router.push("/dashboard");
     router.refresh();
   }
