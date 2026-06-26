@@ -42,17 +42,17 @@ export default async function FixturesPage() {
               <div className="divide-y divide-slate-100">
                 {matchday.matches.length ? (
                   matchday.matches.map((match) => (
-                    <Link key={match.id} href={`/matches/${match.id}`} className="flex items-center justify-between gap-4 px-5 py-4 hover:bg-slate-50">
-                      <div className="flex items-center gap-3">
-                        <TeamLogo src={match.homeTeam.logoUrl} name={match.homeTeam.name} size="sm" />
+                    <Link key={match.id} href={`/matches/${match.id}`} className="grid gap-3 px-5 py-4 hover:bg-slate-50 md:grid-cols-[1fr_auto_1fr_auto] md:items-center">
+                      <div className="flex items-center justify-start gap-3 md:justify-end md:text-right">
                         <span className="font-black">{match.homeTeam.name}</span>
+                        <TeamLogo src={match.homeTeam.logoUrl} name={match.homeTeam.name} size="sm" />
                       </div>
-                      <span className="rounded bg-slate-100 px-3 py-1 text-sm font-black">
+                      <span className="justify-self-start rounded bg-slate-100 px-3 py-1 text-sm font-black md:justify-self-center">
                         {match.result ? `${match.result.homeScore} - ${match.result.awayScore}` : "vs"}
                       </span>
                       <div className="flex items-center gap-3">
-                        <span className="font-black">{match.awayTeam.name}</span>
                         <TeamLogo src={match.awayTeam.logoUrl} name={match.awayTeam.name} size="sm" />
+                        <span className="font-black">{match.awayTeam.name}</span>
                       </div>
                       <Badge tone={match.status === "COMPLETED" ? "green" : "blue"}>{match.status === "COMPLETED" ? "Completed" : "Scheduled"}</Badge>
                     </Link>
