@@ -16,10 +16,10 @@ export default async function LoginPage() {
       backgroundPosition: "center",
       backgroundSize: "cover"
     }}>
-      <section className="w-full max-w-md rounded border border-slate-200 bg-white p-6 shadow-panel">
-        <p className="text-sm font-black uppercase tracking-wide text-emerald-700">eFootball League</p>
+      <section className="w-full max-w-md rounded border border-slate-200 p-6 shadow-panel" style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
+        <p className="text-sm font-black uppercase tracking-wide" style={{ color: "rgba(27, 246, 184, 1)" }}>eFootball League</p>
         <h1 className="mt-2 text-3xl font-black text-slate-950">Welcome back</h1>
-        <p className="mb-6 mt-2 text-slate-600">Sign in to submit results and track the table.</p>
+        <p className="mb-6 mt-2" style={{ color: "rgba(238, 238, 238, 1)" }}>Sign in to submit results and track the table.</p>
         <LoginForm />
       </section>
     </main>
