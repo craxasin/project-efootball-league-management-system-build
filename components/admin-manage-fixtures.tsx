@@ -19,7 +19,7 @@ interface MatchdayWithMatches {
     id: string;
     homeTeamId: string;
     awayTeamId: string;
-    scheduledAt?: string | null;
+    scheduledAt?: Date | null;
     status: "SCHEDULED" | "COMPLETED";
     result?: {
       homeScore: number;
