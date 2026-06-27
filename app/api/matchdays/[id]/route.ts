@@ -14,15 +14,15 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
 
     const { id } = paramsSchema.parse(await params);
 
-    const match = await prisma.match.findUnique({
+    const matchday = await prisma.matchday.findUnique({
       where: { id }
     });
 
-    if (!match) {
-      return NextResponse.json({ error: "Match not found" }, { status: 404 });
+    if (!matchday) {
+      return NextResponse.json({ error: "Matchday not found" }, { status: 404 });
     }
 
-    await prisma.match.delete({
+    await prisma.matchday.delete({
       where: { id }
     });
 

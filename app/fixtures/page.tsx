@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AdminFixtures } from "@/components/admin-fixtures";
+import { AdminManageFixtures } from "@/components/admin-manage-fixtures";
 import { AppShell } from "@/components/shell";
 import { Badge, TeamLogo } from "@/components/ui";
 import { getCurrentUser } from "@/lib/auth";
@@ -31,6 +32,8 @@ export default async function FixturesPage() {
         </section>
 
         {user?.role === "ADMIN" ? <AdminFixtures teams={teams} matchdays={matchdays} /> : null}
+
+        {user?.role === "ADMIN" ? <AdminManageFixtures teams={teams} matchdays={matchdays} /> : null}
 
         <section className="space-y-5">
           {matchdays.map((matchday) => (
